@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Production build artifacts
+dist/
+
+# Secrets and local environment
+.env
+.env.local
+
+# Logs and system metadata
+*.log
+.DS_Store
+Thumbs.db
+
+# Test coverage and intermediate frame captures
+coverage/
+.frames/
+
+# Heavy video demo footage and generated highlight reels
+demo-assets/
+demo/
+temp_gameplay.webm
+temp-gameplay.webm

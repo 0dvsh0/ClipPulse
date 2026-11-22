@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' ws: wss:; base-uri 'none'; form-action 'none';">
+  <title>ClipPulse Overlay</title>
+  <link rel="stylesheet" href="/overlay.css">
+</head>
+<body data-theme="unity">
+  <div class="stage" id="stage">
+    <div class="hud" id="hud">
+      <div class="hud-top">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-word">CLIPPULSE</span>
+        </div>
+        <div class="top-right">
+          <div class="mode-badge" id="modeBadge">IDLE</div>
+          <div class="validation" id="validation">
+            <span class="dot" id="validationDot"></span>
+            <span id="validationText">WAITING</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hud-main">
+        <div class="pulse-block">
+          <div class="bpm-row">
+            <span class="bpm" id="bpm">--</span>
+            <span class="bpm-unit">BPM</span>
+            <span class="delta" id="delta">--</span>
+          </div>
+          <canvas id="pulseCanvas" width="500" height="110" aria-hidden="true"></canvas>
+          <div class="trace-meta">
+            <span id="baseline">BASE --</span>
+            <span id="confidence">CONF --</span>
+          </div>
+        </div>
+
+        <div class="breath-block">
+          <div class="ring-wrap">
+            <svg class="breath-ring" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="ring-track" cx="50" cy="50" r="42"></circle>
+              <circle class="ring-progress" id="breathRing" cx="50" cy="50" r="42"></circle>
+            </svg>
+            <div class="ring-label">
+              <span id="breathRate">--</span>
+              <small>BR/MIN</small>
+            </div>
+          </div>
+          <canvas id="breathCanvas" width="120" height="36" aria-hidden="true"></canvas>
+        </div>
+      </div>
+
+      <div class="hud-bottom">
+        <div class="hype">
+          <span class="hype-label">HYPE</span>
+          <div class="hype-track">
+            <div class="hype-fill" id="hypeFill"></div>
+            <div class="hype-threshold" id="hypeThreshold"></div>
+          </div>
+          <span class="hype-value" id="hypeValue">0</span>
+        </div>
+        <div class="stats">
+          <span id="packetCount">PKT 0</span>
+          <span id="fps">0.0 FPS</span>
+          <span id="sessionTime">00:00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="clipToast" hidden>
+      <div class="toast-glow"></div>
+      <div class="toast-kicker">CLIP</div>
+      <div class="toast-title" id="clipReason">+14.2 BPM spike</div>
+      <div class="toast-sub" id="clipSub">PEAK -- BPM</div>
+    </div>
+
+    <div class="sim-badge" id="simBadge" hidden>SIMULATOR</div>
+    <div class="link-lost" id="linkLost" hidden>LINK LOST</div>
+  </div>
+  <script src="/overlay.js"></script>
+</body>
+</html>
